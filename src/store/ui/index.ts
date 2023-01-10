@@ -9,6 +9,7 @@ export const state: UiState = {
   loading: true,
   snackBar: {
     Active: false,
+    ClassName:"",
     Title: "",
     Msg: "",
   },

@@ -17,8 +17,7 @@
 }
 
 .sidebar .v-list-item--active {
-  -webkit-box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
-          box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
   color: var(--text-color) !important;
 }
 
@@ -27,8 +26,7 @@
 }
 
 .sidebar .v-list-item--active.sub {
-  -webkit-box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
-          box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
   color: var(--textdarker) !important;
   background: transparent !important;
 }
@@ -51,18 +49,13 @@
 }
 
 .sidebar .logo a {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   text-decoration: none;
 }
 
 .sidebar .logo a img {
   width: 40px;
-  -webkit-transition: var(--primary-transition);
   transition: var(--primary-transition);
 }
 
@@ -78,5 +71,4 @@
 
 .sidebar .app-bar {
   background: var(--gradient) !important;
-}
-/*# sourceMappingURL=sidebar.css.map */
+} /*# sourceMappingURL=sidebar.css.map *//*# sourceMappingURL=sidebar.css.map */

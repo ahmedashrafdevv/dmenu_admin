@@ -47,9 +47,12 @@ a{
     height: 100%;
 }
 .app-btn{
-    width: 100%;
+    width: 100%  !important;
     color: #fff !important;
     background: var(--main-gredient);
+}
+.v-btn--disabled {
+    width:100%
 }
 .table-btn{
     width: 100%;

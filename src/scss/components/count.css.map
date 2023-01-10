@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAA;EACP,OAAO,EAAE,IAAI;CAChB",
-    "sources": [
-        "count.scss"
-    ],
-    "names": [],
-    "file": "count.css"
-}
+{"version":3,"sources":["count.scss","count.css"],"names":[],"mappings":"AAAA;EACI,aAAA;ACCJ","file":"count.css"}

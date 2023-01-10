@@ -2,6 +2,7 @@
   <v-app>
       <!-- <div class="breadcrumbs-wrapper"></div> -->
     <drawer/>
+    <snack/>
     <v-main>
        <breadcrumbs />
       <router-view />
@@ -12,6 +13,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Drawer from "@/components/layouts/Drawer.vue";
+import Snack from "@/components/utils/snack.vue";
 import { Validate } from "@/repositories/user";
 import Breadcrumbs from "@/components/layouts/Breadcrumbs.vue";
 
@@ -19,7 +21,8 @@ export default Vue.extend({
   name: "App",
   components: {
     Drawer,
-    Breadcrumbs
+    Breadcrumbs,
+    Snack
 
   },
   created(){

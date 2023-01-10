@@ -1,3 +1,4 @@
+import i18n  from '@/i18n';
 import colors from './colors'
 
 export const switchLanguage = (locale: string, ctx: any) => {
@@ -128,7 +129,7 @@ export const getColor = (index: number) => {
 
 // export const createChart()
 
-export const required = (v: any) => !!v || 'required'
+export const required = (v: any) => !!v || i18n.t('required')
 
 export const convertDate = (date :string) => {
   let d = new Date(date);

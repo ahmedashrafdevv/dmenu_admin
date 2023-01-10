@@ -3,7 +3,7 @@
   <v-container>
     <v-card>
       <v-card-title class="bgdarker">
-        <span><v-icon>{{ form.icon }}</v-icon>       {{ form.title }}</span>
+        <span><v-icon>{{ form.icon }}</v-icon>       {{ $t(form.title) }}</span>
       </v-card-title>
       <v-card-text>
          <v-skeleton-loader

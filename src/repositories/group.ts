@@ -3,6 +3,7 @@ import { mainGroupResponse , subGroupResponse , productResponse } from '@/models
 import Api from '@/utils/axios/Api';
 const Http = Api.getInstance();
 
+
 export const ListHierarchy = () :Promise<groupsHierarchyResponse[]> => {
     return new Promise((resolve, reject) => {
         Http.get(`group/hierarchy?lang=${localStorage.getItem("locale")}`)
@@ -39,6 +40,19 @@ export const ListProducts =  (main:number, sub:number) :Promise<productResponse[
 export const ListSubGroups = (id:number) :Promise<subGroupResponse[]> => {
     return new Promise((resolve, reject) => {
         Http.get(`group/${id}`)
+        .then((d:any) => {
+            resolve(d)
+        }).catch((e:any) => {
+            reject(e)
+        })
+    })
+}
+
+
+
+export const UpdateImage = (payload : object) :Promise<boolean> => {
+    return new Promise((resolve, reject) => {
+        Http.put(`image` , payload)
         .then((d:any) => {
             resolve(d)
         }).catch((e:any) => {

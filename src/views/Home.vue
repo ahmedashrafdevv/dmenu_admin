@@ -37,6 +37,7 @@
                 :messages="[productHint]"
                 :items="product.items"
                 item-text="ItemName"
+                clearable
                 outlined
                 :loading="product.loading"
       
@@ -48,13 +49,15 @@
             <v-col cols="12">
               <v-file-input
                 accept="image/*"
-                :messages="[imageHint]"
+                @change="upload"
+                :rules="[required]"
+                v-model="file"
                 label="الصورة"
                 outlined
               ></v-file-input>
             </v-col>
             <v-col md="12">
-              <v-btn color="app-btn" @click="resetValidation"> تاكيد </v-btn>
+              <v-btn color="app-btn" :disabled="!valid" :loading="loading" @click.prevent="submit"> تاكيد </v-btn>
             </v-col>
           </v-row>
         </v-form>
@@ -63,10 +66,16 @@
   </v-container>
 </template>
 <script>
-import { ListMainGroups, ListSubGroups , ListProducts } from "@/repositories/group";
+import { ListMainGroups,UpdateImage, ListSubGroups , ListProducts } from "@/repositories/group";
+import { Upload } from "@/repositories/file";
 import { required } from "@/utils/helpers";
+import {openSnack} from '@/utils/snack/snack'
+import { removeBasePathFromImage } from "@/utils/helpers/heleprs";
 export default {
   data: () => ({
+    path : '',
+    loading : false,
+    file: null,
     mainGroup: {
       items: [],
       loading: false,
@@ -91,11 +100,47 @@ export default {
   methods: {
     required,
     validate() {
-      this.$refs.form.validate();
+      return this.$refs.form.validate();
     },
     productChanged(val) {
       console.log(val);
       
+    },
+    submit(){
+      // UpdateImage()
+      this.loading = true
+      let isValid = this.validate()
+      if(!isValid) return
+      const form = {
+        mainGroupCode : this.form.mainGroup.GroupCode,
+        subGroupCode : this.form.subGroup.GroupCode,
+        productCode : typeof this.form.product == 'undefined' || this.form.product == null  ? 0 : this.form.product.ItemCode,
+        image : this.form.image
+      }
+      UpdateImage(form).then(res => {
+        this.reset()
+        openSnack("success" , "updated" , "success")
+        this.loading = false
+      }).catch(e => {
+        console.log(e)
+        this.reset()
+        openSnack("failed" , "update failed" , "failed")
+        this.loading = false
+
+      })
+      
+    },
+    upload(){
+      if(this.file == null){
+        return
+      }
+       let formData = new FormData();
+        formData.append("file", this.file);
+        Upload(formData).then((d) => {
+          this.removeImage = false
+          const value = removeBasePathFromImage(d)
+          this.form.image = value
+        });
     },
     mainGroupChanged(val) {
       console.log(val);
